@@ -3,14 +3,21 @@ public class User implements IUser{
 	private int ID;
 	private String Name;
 	private String Password;
+	private int telNumber;
 	private String Notification;
 	private int ItemID;
 	
 	public User() {
 		
 	}
-	public User(int id, String name, String password) {
+	public User(int id, String name, String password,int N) {
 		this.ID = id;
+		this.Name = name;
+		this.Password = password;
+		telNumber=N;
+	}
+	
+	public User( String name, String password) {
 		this.Name = name;
 		this.Password = password;
 	}
@@ -46,5 +53,12 @@ public class User implements IUser{
 	public String getNotification() {
 		return this.Notification;
 	}
-	
+	@Override
+	public void setTelNumber(int N) {
+		telNumber=N;
+	}
+	@Override
+	public int getTelNumber() {
+		return telNumber;
+	}
 }

@@ -8,5 +8,7 @@ public interface IUser {
 	public void setPassword(String psw);
 	public void setNotification(String notification);
 	public String getNotification();
+	public void setTelNumber(int N);
+	public int getTelNumber();
 	//public void addItem(Item item);
 }
