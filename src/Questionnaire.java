@@ -1,7 +1,4 @@
-package swe_phase3;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,9 +24,11 @@ public class Questionnaire {
 			ans = sc.nextLine();
 			if(!(ans.equals(answer.get(i))))
 			{
+				sc.close();
 				return false;
 			}
 		}
+		sc.close();
 		return true;
 	}
 }

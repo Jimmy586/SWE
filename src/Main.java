@@ -1,18 +1,20 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException {
+		PostItem postItem = new PostItem();
 		boolean check= true;
 		Category []category=new Category[7];
-		category[0].name=electronic;
-		category[1].name=academic;
-		category[2].name=walet;
-		category[3].name=bag;
-		category[4].name=clothing;
-		category[5].name=wearable;
-		category[6].name=card;
+		category[0]=new Category("electronic");
+		category[1]=new Category("academic");
+		category[2]=new Category("walet");
+		category[3]=new Category("bag");
+		category[4]=new Category("clothing");
+		category[5]=new Category("wearable");
+		category[6]=new Category("card");
 		User user;
-		SearchItem sri;
+		SearchItem sri = null;
 		Scanner sc= new Scanner(System.in);
 		DataPersistanceUser ud = new DataPersistanceUser(System.getProperty("user.dir")+"/user_data.txt");
 		final int ID=1;
@@ -24,9 +26,9 @@ public class Main {
 			switch (choice1) {
 			case 1:{
 				System.out.println("Name:");
-				String name=sc.nextLine();
+				String name=sc.next();
 				System.out.println("Password:");
-				String password=sc.nextLine();
+				String password=sc.next();
 				System.out.println("Phone Number:");
 				int phone=sc.nextInt();
 				user=new User(ID,name,password,phone);
@@ -39,14 +41,16 @@ public class Main {
 					choice2=sc.nextInt();
 					switch(choice2) {
 						case 1:{
-							choices();
-							choice3=sc.nextInt();
+							/*choices();
+							choice3=sc.nextInt();*/
+							postItem.post(user, category);
 							System.out.println("Press 0 to log out");
 							int choice6=sc.nextInt();
 							if(choice6==0) {
 								System.out.println("see you again...");
 								test2=false;
 							}
+							break;
 						}
 						case 2:{
 							choices();
@@ -58,6 +62,7 @@ public class Main {
 								System.out.println("see you again...");
 								test2=false;
 								}
+							break;
 						}
 						default:{System.out.println("enter a valid choice,Please try again");check=true;break;}
 					}
@@ -67,9 +72,9 @@ public class Main {
 			
 			case 2:{
 				System.out.println("Name:");
-				String name=sc.nextLine();
+				String name=sc.next();
 				System.out.println("Password:");
-				String password=sc.nextLine();
+				String password=sc.next();
 				user=ud.load(name);
 				if(user!=null) {
 					if(user.getPassword()==password) {
@@ -80,14 +85,16 @@ public class Main {
 							choice2=sc.nextInt();
 							switch(choice2) {
 								case 1:{
-									choices();
-									choice3=sc.nextInt();
+									/*choices();
+									choice3=sc.nextInt();*/
+									postItem.post(user, category);
 									System.out.println("Press 0 to log out");
 									int choice6=sc.nextInt();
 									if(choice6==0) {
 										System.out.println("see you again...");
 										test2=false;
 									}
+									break;
 								}
 								case 2:{
 									choices();
@@ -99,6 +106,7 @@ public class Main {
 										System.out.println("see you again...");
 										test2=false;
 									}
+									break;
 								}
 								default:{System.out.println("enter a valid choice,Please try again");check=true;break;}
 							}
