@@ -42,6 +42,27 @@ public class DataPersistanceUser {
 		}
 		return user;
 	}
+	
+	public void load(int id) {
+		User user = null;
+		List<String> users = null;
+		try {
+			users = Files.readAllLines(new File(this.Connection).toPath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(String usr : users) {
+			String[] usrarr = usr.split("~");
+			if(usrarr[0].equals(String.valueOf(id))) {
+				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2]);
+				user.setNotification(usrarr[3]);
+			}
+			
+		}
+		if(user != null) System.out.println(user.getID()+" : "+user.getName()+";");
+	}
+	
 	public void save(User user) {
 		String usrstr = "";
 		usrstr += user.getID();
@@ -51,7 +72,7 @@ public class DataPersistanceUser {
 		usrstr += "\n";
 		
 		try {
-			Files.writeString(new File(this.Connection).toPath(), usrstr, StandardOpenOption.APPEND);
+			Files.write(new File(this.Connection).toPath(), usrstr.getBytes(), StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
