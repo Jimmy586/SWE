@@ -35,7 +35,7 @@ public class DataPersistanceUser {
 		for(String usr : users) {
 			String[] usrarr = usr.split("~");
 			if(usrarr[1].equals(name)) {
-				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2]);
+				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2],(Integer.valueOf(usrarr[3])));
 				user.setNotification(usrarr[3]);
 			}
 			
@@ -55,7 +55,7 @@ public class DataPersistanceUser {
 		for(String usr : users) {
 			String[] usrarr = usr.split("~");
 			if(usrarr[0].equals(String.valueOf(id))) {
-				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2]);
+				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2],(Integer.valueOf(usrarr[3])));
 				user.setNotification(usrarr[3]);
 			}
 			
@@ -68,6 +68,7 @@ public class DataPersistanceUser {
 		usrstr += user.getID();
 		usrstr += "~"+user.getName();
 		usrstr += "~"+user.getPassword();
+		usrstr += "~"+user.getTelNumber();
 		usrstr += "~"+user.getNotification();
 		usrstr += "\n";
 		
