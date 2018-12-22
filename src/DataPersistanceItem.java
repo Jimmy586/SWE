@@ -1,4 +1,4 @@
-package swe_phase3;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,12 +6,10 @@ import java.io.IOException;
 public class DataPersistanceItem {
 	String connection;
 	Category cat;
+	DataPersistanceItem(String connection){this.connection=connection;}
 	
-	void save(Item item, User user, String catName) throws IOException
-	{
-		cat = new Category(catName);
-		cat.itemList.add(item);
-		
+	void save(Item item, User user) throws IOException
+	{		
 		FileWriter fileWriter = new FileWriter(connection, true);
 		
 		fileWriter.write(item.ItemID);
