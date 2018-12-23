@@ -47,6 +47,7 @@ public class PostItem {
 			}
 			q = new Questionnaire(question, answer);
 			item.questions = q;
+			item.UserID = userID;
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[0];
@@ -72,6 +73,7 @@ public class PostItem {
 			q = new Questionnaire(question, answer);
 			item.questions = q;
 			item.claim = false;
+			item.UserID = userID;
 			Item.ItemID++;
 			item.category = cat[1];
 			cat[1].itemList.add(item);
@@ -96,6 +98,7 @@ public class PostItem {
 			q = new Questionnaire(question, answer);
 			item.questions = q;
 			item.claim = false;
+			item.UserID = userID;
 			Item.ItemID++;
 			item.category = cat[2];
 			cat[2].itemList.add(item);
@@ -121,6 +124,7 @@ public class PostItem {
 			item.questions = q;
 			item.claim = false;
 			Item.ItemID++;
+			item.UserID = userID;
 			item.category = cat[3];
 			cat[3].itemList.add(item);
 			break;
@@ -145,6 +149,7 @@ public class PostItem {
 			item.questions = q;
 			item.claim = false;
 			Item.ItemID++;
+			item.UserID = userID;
 			item.category = cat[4];
 			cat[4].itemList.add(item);
 			break;
@@ -169,6 +174,7 @@ public class PostItem {
 			item.questions = q;
 			item.claim = false;
 			Item.ItemID++;
+			item.UserID = userID;
 			item.category = cat[5];
 			cat[5].itemList.add(item);
 			break;
@@ -193,6 +199,7 @@ public class PostItem {
 			item.questions = q;
 			item.claim = false;
 			Item.ItemID++;
+			item.UserID = userID;
 			item.category = cat[6];
 			cat[6].itemList.add(item);
 			break;
@@ -201,5 +208,6 @@ public class PostItem {
 		DataPersistanceItem dpi;
 		dpi = new DataPersistanceItem(System.getProperty("user.dir")+"/item_data.txt");
 		dpi.save(item, user);
+		//sc.close();
 	}
 }

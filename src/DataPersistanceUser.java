@@ -36,14 +36,14 @@ public class DataPersistanceUser {
 			String[] usrarr = usr.split("~");
 			if(usrarr[1].equals(name)) {
 				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2],(Integer.valueOf(usrarr[3])));
-				user.setNotification(usrarr[3]);
+				user.setNotification(usrarr[4]);
 			}
 			
 		}
 		return user;
 	}
 	
-	public void load(int id) {
+	public User load(int id) {
 		User user = null;
 		List<String> users = null;
 		try {
@@ -56,11 +56,12 @@ public class DataPersistanceUser {
 			String[] usrarr = usr.split("~");
 			if(usrarr[0].equals(String.valueOf(id))) {
 				user = new User((Integer.valueOf(usrarr[0])), usrarr[1], usrarr[2],(Integer.valueOf(usrarr[3])));
-				user.setNotification(usrarr[3]);
+				user.setNotification(usrarr[4]);
 			}
 			
 		}
 		if(user != null) System.out.println(user.getID()+" : "+user.getName()+";");
+		return user;
 	}
 	
 	public void save(User user) {

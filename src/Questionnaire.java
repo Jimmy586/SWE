@@ -21,14 +21,14 @@ public class Questionnaire {
 		for(int i = 0; i < question.size(); i++)
 		{
 			System.out.println(question.get(i));
-			ans = sc.nextLine();
+			ans = sc.next();
 			if(!(ans.equals(answer.get(i))))
 			{
-				sc.close();
+				//sc.close();
 				return false;
 			}
 		}
-		sc.close();
+		//sc.close();
 		return true;
 	}
 }
