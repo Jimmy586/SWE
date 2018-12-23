@@ -13,7 +13,6 @@ class Item{
 	
 	Item(String n,int ItemID,String description){
 		name=n;
-		this.ItemID=ItemID;	
 		this.description=description;
 	}
 	
