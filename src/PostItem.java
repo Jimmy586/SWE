@@ -1,5 +1,3 @@
-
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,7 +25,6 @@ public class PostItem {
 		{
 			System.out.println(i+1 + " " + categories[i]);
 		}
-		String category = new String();
 		choice = sc.nextInt();
 		switch(choice)
 		{
@@ -77,7 +74,7 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[1];
-			cat[0].itemList.add(item);
+			cat[1].itemList.add(item);
 			break;
 		case 3: 
 			System.out.println("Please enter name");
@@ -101,7 +98,7 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[2];
-			cat[0].itemList.add(item);
+			cat[2].itemList.add(item);
 			break;
 		case 4: 
 			System.out.println("Please enter name");
@@ -125,7 +122,7 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[3];
-			cat[0].itemList.add(item);
+			cat[3].itemList.add(item);
 			break;
 		case 5: 
 			System.out.println("Please enter name");
@@ -149,7 +146,7 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[4];
-			cat[0].itemList.add(item);
+			cat[4].itemList.add(item);
 			break;
 		case 6: 
 			System.out.println("Please enter name");
@@ -173,7 +170,7 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[5];
-			cat[0].itemList.add(item);
+			cat[5].itemList.add(item);
 			break;
 		case 7: 
 			System.out.println("Please enter name");
@@ -197,20 +194,12 @@ public class PostItem {
 			item.claim = false;
 			Item.ItemID++;
 			item.category = cat[6];
-			cat[0].itemList.add(item);
+			cat[6].itemList.add(item);
 			break;
 		}
-		
 		/*Save Item data in a file*/
 		DataPersistanceItem dpi;
-		try {
-			dpi = new DataPersistanceItem(System.getProperty("user.dir")+"/item_data.txt");
-			dpi.connection = "itemDB.txt";
-			dpi.save(item, user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		dpi = new DataPersistanceItem(System.getProperty("user.dir")+"/item_data.txt");
+		dpi.save(item, user);
 	}
 }
