@@ -28,6 +28,10 @@ public class SearchItem {
 		it = new Item();
 	}
 	
+	SearchItem(){
+		it = new Item();
+	}
+	
 	public SearchItem(Item it) {
 		this.it=it;
 	}
@@ -36,7 +40,6 @@ public class SearchItem {
 	public void DisplayItem(Category c) {
 		Scanner sc= new Scanner(System.in);
 		int i=c.itemList.size();
-		
 		if(i==0) {
 			System.out.println("No Item found yet...");return;
 		}
@@ -67,6 +70,5 @@ public class SearchItem {
 				System.out.println("The item is not yours");
 			}
 		}
-		//sc.close();
 	}
 }

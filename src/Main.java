@@ -15,14 +15,14 @@ public class Main {
 		category[6]=new Category("card");
 		User user;
 		SearchItem sri = new SearchItem();
-		//Scanner sc;
 		DataPersistanceUser ud = new DataPersistanceUser(System.getProperty("user.dir")+"/user_data.txt");
 		int ID=1;
-		int choice1,choice2,choice3, choice6;
+		int choice1,choi
+      ce2,choice3, choice6;
 		do {
 			System.out.println("1:Create a new Account");
 			System.out.println("2:Sign In");
-			//sc= new Scanner(System.in);
+
 			choice1= inputInt(); //sc.nextInt();
 			switch (choice1) {
 			case 1:{
@@ -31,7 +31,9 @@ public class Main {
 				System.out.println("Password:");
 				String password=inputStr();//sc.next();
 				System.out.println("Phone Number:");
+
 				int phone=inputInt(); //sc.nextInt();
+
 				ID = (int)(Math.random() * 1000 + 1);
 				user=new User(ID,name,password,phone);
 				user.setNotification("Sample Nitification");
@@ -47,6 +49,7 @@ public class Main {
 							choice3=sc.nextInt();*/
 							postItem.post(user, category);
 							System.out.println("Press 0 to log out and any to continue");
+
 							choice6=inputInt();//sc.nextInt();
 							if(choice6 == 0) {
 								System.out.println("see you again...");
@@ -74,6 +77,7 @@ public class Main {
 			
 			case 2:{
 				System.out.println("Name:");
+
 				String name=inputStr(); //sc.next();
 				user=ud.load(name);
 				if(user == null)
@@ -95,6 +99,7 @@ public class Main {
 									choice3=sc.nextInt();*/
 									postItem.post(user, category);
 									System.out.println("Press 0 to log out");
+
 									choice6=inputInt();//sc.nextInt();
 									if(choice6==0) {
 										System.out.println("see you again...");
@@ -107,6 +112,7 @@ public class Main {
 									choice3=inputInt();//sc.nextInt();
 									sri.DisplayItem(category[choice3-1]);
 									System.out.println("Press 0 to log out");
+
 									choice6 = inputInt();
 									if(/*sc.nextInt()*/ choice6 == 0) {
 										System.out.println("see you again...");
