@@ -22,7 +22,11 @@ class Item{
 public class SearchItem {
 	public Item it;
 	public int choiceToClaim=0;
-	Scanner sc= new Scanner(System.in);
+	//Scanner sc= new Scanner(System.in);
+	
+	SearchItem(){
+		it = new Item();
+	}
 	
 	SearchItem(){
 		it = new Item();
@@ -34,8 +38,8 @@ public class SearchItem {
 	
 	@SuppressWarnings("null")
 	public void DisplayItem(Category c) {
+		Scanner sc= new Scanner(System.in);
 		int i=c.itemList.size();
-		System.out.println("category size: anaty display item " + c.itemList.size());
 		if(i==0) {
 			System.out.println("No Item found yet...");return;
 		}

@@ -15,23 +15,25 @@ public class Main {
 		category[6]=new Category("card");
 		User user;
 		SearchItem sri = new SearchItem();
-		Scanner sc;
 		DataPersistanceUser ud = new DataPersistanceUser(System.getProperty("user.dir")+"/user_data.txt");
 		int ID=1;
-		int choice1,choice2,choice3, choice6;
+		int choice1,choi
+      ce2,choice3, choice6;
 		do {
 			System.out.println("1:Create a new Account");
 			System.out.println("2:Sign In");
-			sc= new Scanner(System.in);
-			choice1=sc.nextInt();
+
+			choice1= inputInt(); //sc.nextInt();
 			switch (choice1) {
 			case 1:{
 				System.out.println("Name:");
-				String name=sc.next();
+				String name= inputStr(); //sc.next();
 				System.out.println("Password:");
-				String password=sc.next();
+				String password=inputStr();//sc.next();
 				System.out.println("Phone Number:");
-				int phone=sc.nextInt();
+
+				int phone=inputInt(); //sc.nextInt();
+
 				ID = (int)(Math.random() * 1000 + 1);
 				user=new User(ID,name,password,phone);
 				user.setNotification("Sample Nitification");
@@ -40,15 +42,16 @@ public class Main {
 				do {
 					System.out.println("1:Post Found Item");
 					System.out.println("2:Search for lost Item:");
-					choice2=sc.nextInt();
+					choice2=inputInt();//sc.nextInt();
 					switch(choice2) {
 						case 1:{
 							/*choices();
 							choice3=sc.nextInt();*/
 							postItem.post(user, category);
 							System.out.println("Press 0 to log out and any to continue");
-							//int choice6=sc.nextInt();
-							if(sc.nextInt() == 0) {
+
+							choice6=inputInt();//sc.nextInt();
+							if(choice6 == 0) {
 								System.out.println("see you again...");
 								test2=false;
 							}
@@ -56,11 +59,11 @@ public class Main {
 						}
 						case 2:{
 							choices();
-							choice3=sc.nextInt();
+							choice3=inputInt();//sc.nextInt();
 							sri.DisplayItem(category[choice3-1]);
 							System.out.println("Press 0 to return");
-							choice6=sc.nextInt();
-							if(sc.nextInt() == 0) {
+							choice6=inputInt();//sc.nextInt();
+							if(choice6 == 0) {
 								System.out.println("see you again...");
 								test2=false;
 								}
@@ -74,24 +77,30 @@ public class Main {
 			
 			case 2:{
 				System.out.println("Name:");
-				String name=sc.next();
+
+				String name=inputStr(); //sc.next();
 				user=ud.load(name);
-				if(user.getName().equals(name)) {
+				if(user == null)
+				{
+					System.out.println("The user doesn't exist");
+				}
+				else if(user.getName().equals(name)) {
 					System.out.println("Password:");
-					String password=sc.next();
+					String password=inputStr();//sc.next();
 					if(user.getPassword().equals(password)) {
 						boolean test2=true;
 						do {
 							System.out.println("1:Post Found Item");
 							System.out.println("2:Search for lost Item:");
-							choice2=sc.nextInt();
+							choice2=inputInt();//sc.nextInt();
 							switch(choice2) {
 								case 1:{
 									/*choices();
 									choice3=sc.nextInt();*/
 									postItem.post(user, category);
 									System.out.println("Press 0 to log out");
-									choice6=sc.nextInt();
+
+									choice6=inputInt();//sc.nextInt();
 									if(choice6==0) {
 										System.out.println("see you again...");
 										test2=false;
@@ -100,10 +109,12 @@ public class Main {
 								}
 								case 2:{
 									choices();
-									choice3=sc.nextInt();
+									choice3=inputInt();//sc.nextInt();
 									sri.DisplayItem(category[choice3-1]);
 									System.out.println("Press 0 to log out");
-									if(sc.nextInt() == 0) {
+
+									choice6 = inputInt();
+									if(/*sc.nextInt()*/ choice6 == 0) {
 										System.out.println("see you again...");
 										test2=false;
 									}
@@ -124,7 +135,25 @@ public class Main {
 			default: {System.out.println("enter a valid choice,Please try again");check=true;break;}
 			}
 		} while(check);
-		sc.close();
+		//sc.close();
+	}
+	
+	static int inputInt()
+	{
+		Scanner sc = new Scanner(System.in);
+		int x; 
+		x = sc.nextInt();
+		//sc.close();
+		return x;
+	}
+	
+	static String inputStr()
+	{
+		Scanner sc = new Scanner(System.in);
+		String s; 
+		s = sc.next();
+		//sc.close();
+		return s;
 	}
 	
 	public static void choices() {

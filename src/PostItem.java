@@ -208,6 +208,5 @@ public class PostItem {
 		DataPersistanceItem dpi;
 		dpi = new DataPersistanceItem(System.getProperty("user.dir")+"/item_data.txt");
 		dpi.save(item, user);
-		sc.close();
 	}
 }
